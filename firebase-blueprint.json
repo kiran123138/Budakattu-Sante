@@ -1,0 +1,62 @@
+{
+  "entities": {
+    "Artisan": {
+      "title": "Artisan",
+      "description": "Information about the tribal artisan",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "tribe": { "type": "string" },
+        "story": { "type": "string" },
+        "photoUrl": { "type": "string", "format": "uri" },
+        "location": { "type": "string" },
+        "rating": { "type": "number" },
+        "joinedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "tribe", "story", "photoUrl"]
+    },
+    "Product": {
+      "title": "Product",
+      "description": "Handcrafted products or organic forest produce",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "price": { "type": "number" },
+        "category": { "type": "string", "enum": ["Textiles", "Woodwork", "Art", "Organic", "Jewelry"] },
+        "artisanId": { "type": "string" },
+        "images": { "type": "array", "items": { "type": "string", "format": "uri" } },
+        "stock": { "type": "integer" },
+        "impactScore": { "type": "string", "description": "Qualitative impact of purchase (e.g. Health, Education)" }
+      },
+      "required": ["name", "price", "artisanId", "images"]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "Customer purchase transaction",
+      "type": "object",
+      "properties": {
+        "buyerId": { "type": "string" },
+        "productId": { "type": "string" },
+        "quantity": { "type": "integer" },
+        "status": { "type": "string", "enum": ["Pending", "Shipped", "Delivered"] },
+        "total": { "type": "number" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      }
+    }
+  },
+  "firestore": {
+    "artisans": {
+      "schema": "Artisan",
+      "description": "Collection of tribal artisans"
+    },
+    "products": {
+      "schema": "Product",
+      "description": "Marketplace items"
+    },
+    "orders": {
+      "schema": "Order",
+      "description": "Sales history"
+    }
+  }
+}

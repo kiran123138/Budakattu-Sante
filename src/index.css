@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Libre Baskerville", serif;
+  
+  --color-primary: #5A5A40;
+  --color-accent: #F27D26;
+  --color-earth-100: #F5F5F0;
+  --color-earth-200: #E6E6DF;
+  --color-earth-800: #2D2D24;
+}
+
+@layer base {
+  body {
+    @apply bg-earth-100 text-earth-800 font-sans antialiased;
+  }
+  
+  h1, h2, h3, h4 {
+    @apply font-serif;
+  }
+}
+
+@utility container-sm {
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@utility glass-card {
+  @apply bg-white/80 backdrop-blur-md rounded-[32px] border border-white/20;
+}
